@@ -22,13 +22,7 @@ public class RunSimulator {
         ArrayList<FogNode> nodes = srvc.createnodes();
 
         System.out.println("Number of Device = "+sts.size());
-//        for (IotDevice s : sts){
-//            System.out.println(s.xaxis+"\t"+s.yaxis);
-//        }
-//        System.out.println("Number of nodes = "+nodes.size());
-//        for (FogNode s: nodes){
-//            System.out.println(s.xaxis+"\t"+s.yaxis);
-//        }
+
         try {
             PrintWriter fileout = new PrintWriter(new FileWriter("iotdevices.txt"));
 
