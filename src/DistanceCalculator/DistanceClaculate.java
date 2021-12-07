@@ -25,6 +25,7 @@ public class DistanceClaculate {
                 if (calculatedData[j.uid][i.uid] <= min){
                     min = calculatedData[j.uid][i.uid];
                     i.fogId = j.uid;
+                    j.connectedDevices.add(i.uid);
                 }
             }
             i.fogNodeDistance=min;
@@ -37,8 +38,13 @@ public class DistanceClaculate {
                 }
             }
         }
+        System.out.println("Iot devices connected to nearest fog nodes");
         for (FogNode j: nodes){
             System.out.println("Fog Id "+j.uid+" total device connected = "+j.iotDevices);
+        }
+        // print connected devices list of fognodes
+        for (FogNode j: nodes){
+            System.out.println("Fog Id "+j.uid+" connected devices = "+j.connectedDevices);
         }
     }
 }

@@ -21,7 +21,7 @@ public class loadBalancer {
             }
         }
         for (FogNode node : nodes) {
-            System.out.println("Node"+node.uid+"Number of requests: "+node.getNumberOfRequests());
+            System.out.println("Node "+node.uid+" Number of requests: "+node.getNumberOfRequests());
         }
     }
 }

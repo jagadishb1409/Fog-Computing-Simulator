@@ -1,5 +1,5 @@
 package entities;
-
+import java.util.ArrayList;
 
 public class FogNode<list> {
     public int uid;
@@ -8,7 +8,7 @@ public class FogNode<list> {
     public int fogNode;
     public int iotDevices;
     public int[] neighbourNodes = new int[fogNode];
-    public int[] connectedDevices = new int[iotDevices];
+    public ArrayList<IotDevice> connectedDevices = new ArrayList<IotDevice>();
     public int ram = 1000;
     public int load;
     public int numberOfRequests = 0;
