@@ -46,7 +46,7 @@ public class RunSimulator {
             System.out.println(e);
         }
         DistanceClaculate.calculate(nodes, sts);
-        //loadBalancer.sendRequest(nodes, sts);
+        loadBalancer.sendRequest(nodes, sts);
 
     }
 }

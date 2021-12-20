@@ -10,16 +10,22 @@ public class loadBalancer {
     public static void sendRequest(ArrayList<FogNode> nodes, ArrayList<IotDevice> devices) {
         for (IotDevice device : devices) {
             for (FogNode node : nodes) {
-                int randomIndex = (int) (Math.random() * devices.size());
-                if (!node.isHeavilyLoaded()) {
-                    int randomIndex2 = (int) (Math.random() * nodes.size());
-                    if (randomIndex2 != randomIndex) {
-                        nodes.get(randomIndex2).receiveRequest(device.request);
+                if (node.connectedDevices.contains(device.uid)) {
+
+                    if (!node.isHeavilyLoaded()){
+                        node.receiveRequest(device.request);
+                        device.updateRequest();
+                    }
+                    else if (node.isHeavilyLoaded()){
+                        // send request to neighbor node
+                        int nextNode = node.neighbouringNodes;
+                        nodes.get(nextNode).receiveRequest(device.request);
                         device.updateRequest();
                     }
                 }
             }
         }
+
         for (FogNode node : nodes) {
             System.out.println("Node "+node.uid+" Number of requests: "+node.getNumberOfRequests());
         }

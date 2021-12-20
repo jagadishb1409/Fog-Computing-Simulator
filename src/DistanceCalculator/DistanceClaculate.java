@@ -21,10 +21,9 @@ public class DistanceClaculate {
             }
         }
         for (IotDevice i : devices) {
-            int min = calculatedData[0][i.uid];
+            int min = Params.MAX_DISTANCE;
             for (FogNode j : nodes) {
                 if (calculatedData[j.uid][i.uid] <= min) {
-                    min = calculatedData[j.uid][i.uid];
                     i.fogId = j.uid;
                     j.connectedDevices.add(i.uid);
                 }
