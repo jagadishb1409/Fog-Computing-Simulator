@@ -1,4 +1,7 @@
 package entities;
+
+import jdk.internal.icu.text.UnicodeSet;
+
 import java.util.ArrayList;
 
 public class FogNode<list> {
@@ -7,7 +10,6 @@ public class FogNode<list> {
     public int yaxis;
     public int fogNode;
     public int iotDevices;
-    public int[] neighbourNodes = new int[fogNode];
     public ArrayList<IotDevice> connectedDevices = new ArrayList<IotDevice>();
     public int ram = 1000;
     public int load;
@@ -16,6 +18,14 @@ public class FogNode<list> {
     public int processingPower;
     public list connectedDevicesList;
     public int capacity = 40;
+    public int neighbouringNodes;
+    public int neighboruingNodesDistece;
+
+    public void addNeighbouringNodes(int neighbouringNodes, int neighboruingNodesDistece) {
+        this.neighbouringNodes = neighbouringNodes;
+        this.neighboruingNodesDistece = neighboruingNodesDistece;
+    }
+
 
     public void receiveRequest(int request) {
         numberOfRequests += request;
