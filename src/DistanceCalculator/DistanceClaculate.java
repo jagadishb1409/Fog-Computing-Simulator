@@ -63,7 +63,6 @@ public class DistanceClaculate {
         }
 
         for (FogNode j : nodes) {
-            System.out.println("Fog Id " + j.uid + " neighboring nodes = " + j.neighbouringNodes);
             System.out.println("Fog Id " + j.uid + " neighboring nodes distance = " + Arrays.toString(j.neighboruingNodesDistance));
             System.out.println("Fog Id " + j.uid + " X axis = " + j.xaxis + " Y axis = " + j.yaxis);
             // print list of connected nodes

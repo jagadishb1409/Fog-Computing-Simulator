@@ -8,7 +8,7 @@ public class IotDevice {
     public int yaxis;
     public int fogNodeDistance;
     public int fogId;
-    public int request = (int) ((Math.random() * (5 - 1)) + 1);;
+    public int request = (int) ((Math.random() * (5 - 1)) + 1);
     public int generationRate;
     public int applicationType;
 

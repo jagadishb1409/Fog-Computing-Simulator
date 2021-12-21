@@ -10,7 +10,7 @@ public class ServiceClass {
     public ArrayList<IotDevice> createuser()
     {
         Random r = new Random();
-        r.setSeed(10);
+        r.setSeed(1178);
         ArrayList<IotDevice> sts = new ArrayList<IotDevice>();
         for (int i = 0; i < Params.NUM_OF_DEVICES; i++){
             IotDevice s = new IotDevice();
@@ -23,7 +23,7 @@ public class ServiceClass {
     }
     public ArrayList<FogNode> createnodes(){
         Random r = new Random();
-        r.setSeed(10);
+        r.setSeed(19263);
         ArrayList<FogNode> devices = new ArrayList<FogNode>();
         for (int i = 0; i < Params.NUM_OF_NODES; i++){
             FogNode s = new FogNode();

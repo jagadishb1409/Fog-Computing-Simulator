@@ -19,7 +19,6 @@ public class FogNode<list> {
     public int packetsQueue = 0;
     public int processingPower;
     public int capacity = 40;
-    public int neighbouringNodes;
     public int neighboruingNodesDistance[] = new int[Params.NUM_OF_NODES];
     public int connectedNodes[] = new int[Params.NUM_OF_NODES];
     public int count = 0;
@@ -52,7 +51,11 @@ public class FogNode<list> {
         return false;
     }
 
-    public int getFirstNeighbourNode() {
-        return connectedNodes[0];
+    public int getNeighbourNode(int index) {
+        return connectedNodes[index];
+    }
+
+    public int sizeofConnectedNode() {
+        return connectedNodes.length;
     }
 }
