@@ -3,6 +3,8 @@ package loadBalancer;
 import entities.FogNode;
 import entities.IotDevice;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class loadBalancer {
@@ -27,8 +29,18 @@ public class loadBalancer {
         }
 
         for (FogNode node : nodes) {
-            System.out.println("Node " + node.uid + " Number of requests: " + node.getNumberOfRequests());
-//            System.out.println(node.checkLoad());
+            System.out.println("Node " + node.uid + " Number of packets received : " + node.getNumberOfRequests());
+        }
+        try {
+            PrintWriter fileout = new PrintWriter(new FileWriter("fognodes_request.txt"));
+
+            for (FogNode s: nodes) {
+                fileout.println(s.uid+"\t"+s.getNumberOfRequests());
+            }
+            fileout.close();
+            System.out.println("success...");
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }
