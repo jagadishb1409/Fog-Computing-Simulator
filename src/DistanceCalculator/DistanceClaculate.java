@@ -4,8 +4,9 @@ import entities.FogNode;
 import entities.IotDevice;
 import parameters.Params;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
+
+import java.util.*;
 
 public class DistanceClaculate {
     public static void calculate(ArrayList<FogNode> nodes, ArrayList<IotDevice> devices) {
@@ -47,11 +48,8 @@ public class DistanceClaculate {
                     int y = (int) (j.yaxis - k.yaxis);
                     int square = (int) (Math.pow(x, 2) + Math.pow(y, 2));
                     cal = (int) Math.sqrt(square);
-                    // if the distance is less than the threshold, add it to the neighboring nodes
                     System.out.println("Distance between " + j.uid + " and " + k.uid + " is " + cal);
-                    if (cal <= Params.NEIGHBOR_DISTANCE) {
-                        j.addNeighbouringNodes(k.uid, cal);
-                    }
+                    j.addNeighbouringNodes(k.uid, cal);
                 }
             }
         }
@@ -63,10 +61,13 @@ public class DistanceClaculate {
         for (FogNode j : nodes) {
             System.out.println("Fog Id " + j.uid + " connected devices = " + j.connectedDevices);
         }
-        //print neighbor nodes
+
         for (FogNode j : nodes) {
             System.out.println("Fog Id " + j.uid + " neighboring nodes = " + j.neighbouringNodes);
-            System.out.println("Fog Id " + j.uid + " neighboring nodes distance = " + j.neighboruingNodesDistece);
+            System.out.println("Fog Id " + j.uid + " neighboring nodes distance = " + Arrays.toString(j.neighboruingNodesDistance));
+            System.out.println("Fog Id " + j.uid + " X axis = " + j.xaxis + " Y axis = " + j.yaxis);
+            // print list of connected nodes
+            System.out.println("Fog Id " + j.uid + " connected Nodes = " + Arrays.toString(j.connectedNodes));
         }
     }
 }
