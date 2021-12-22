@@ -26,6 +26,7 @@ public class RunSimulator {
 
         try {
             PrintWriter fileout = new PrintWriter(new FileWriter("iotdevices.txt"));
+            fileout.println(0 + "\t" + 0);
 
             for (IotDevice s: sts) {
                 fileout.println(s.xaxis+"\t"+s.yaxis);
@@ -37,6 +38,7 @@ public class RunSimulator {
         }
         try {
             PrintWriter fileout = new PrintWriter(new FileWriter("fognodes.txt"));
+            fileout.println(0 + "\t" + 0);
 
             for (FogNode s: nodes) {
                 fileout.println(s.xaxis+"\t"+s.yaxis);
@@ -47,6 +49,7 @@ public class RunSimulator {
             System.out.println(e);
         }
         DistanceClaculate.calculate(nodes, sts);
+        loadBalancer.setRequest(nodes, sts);
         loadBalancer.sendRequest(nodes, sts);
 //        rrBalancer.sendRequest(nodes, sts);
     }

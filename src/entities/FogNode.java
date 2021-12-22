@@ -3,6 +3,7 @@ package entities;
 import parameters.Params;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FogNode<list> {
     public int uid;
@@ -20,6 +21,7 @@ public class FogNode<list> {
     public int connectedNodes[] = new int[Params.NUM_OF_NODES];
     public int count = 0;
     public float satisfactory;
+    public int tnumberOfRequest = 0;
 
     public void addNeighbouringNodes(int neighbouringNodes, int neighboruingNodesDistance) {
         this.neighboruingNodesDistance[count] = neighboruingNodesDistance;
@@ -38,7 +40,7 @@ public class FogNode<list> {
     }
 
     public void checkSatisfactory() {
-        satisfactory = (float) (Params.capacity - packetsQueue) / Params.capacity * 100;
+        satisfactory = (float) (packetsQueue) / Params.max_capacity * 100;
     }
 
     public boolean isHeavilyLoaded() {
@@ -54,5 +56,9 @@ public class FogNode<list> {
 
     public int sizeofConnectedNode() {
         return connectedNodes.length;
+    }
+
+    public void updateRequest(int request) {
+        tnumberOfRequest += request;
     }
 }

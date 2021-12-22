@@ -7,5 +7,5 @@ public class Params {
     public static int LENGTH = 1000;
     public static int NUM_OF_NODES = 10;
     public static int capacity = 55;
-
+    public static int max_capacity = 68;
 }

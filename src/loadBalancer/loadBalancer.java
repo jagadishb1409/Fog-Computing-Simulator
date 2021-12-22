@@ -8,6 +8,27 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class loadBalancer {
+    public static void setRequest(ArrayList<FogNode> nodes, ArrayList<IotDevice> devices) {
+        for(IotDevice device : devices) {
+            for (FogNode node : nodes) {
+                if (node.connectedDevices.contains(device.uid)) {
+                    node.updateRequest(device.request);
+                }
+            }
+        }
+        try {
+            PrintWriter fileout = new PrintWriter(new FileWriter("fognodes_before_offloading.txt"));
+            fileout.println(0 + "\t" + 0);
+
+            for (FogNode s: nodes) {
+                fileout.println(s.uid+"\t"+s.tnumberOfRequest);
+            }
+            fileout.close();
+            System.out.println("success...");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public static void sendRequest(ArrayList<FogNode> nodes, ArrayList<IotDevice> devices) {
         for (IotDevice device : devices) {
@@ -33,6 +54,7 @@ public class loadBalancer {
         }
         try {
             PrintWriter fileout = new PrintWriter(new FileWriter("fognodes_request.txt"));
+            fileout.println(0 + "\t" + 0);
 
             for (FogNode s: nodes) {
                 fileout.println(s.uid+"\t"+s.getNumberOfRequests());
@@ -48,6 +70,7 @@ public class loadBalancer {
         }
         try {
             PrintWriter fileout = new PrintWriter(new FileWriter("satisfactory.txt"));
+            fileout.println(0 + "\t" + 0);
             for (FogNode s: nodes) {
                 fileout.println(s.uid+"\t"+s.satisfactory);
             }

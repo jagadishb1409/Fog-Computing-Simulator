@@ -61,6 +61,7 @@ public class DistanceClaculate {
         }
         try {
             PrintWriter fileout = new PrintWriter(new FileWriter("fognodes_connected.txt"));
+            fileout.println(0 + "\t" + 0);
 
             for (FogNode s: nodes) {
                 fileout.println(s.uid+"\t"+s.iotDevices);
