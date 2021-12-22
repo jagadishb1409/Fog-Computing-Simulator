@@ -42,5 +42,19 @@ public class loadBalancer {
         } catch (Exception e) {
             System.out.println(e);
         }
+        for (FogNode node : nodes){
+            node.checkSatisfactory();
+            System.out.println(node.satisfactory);
+        }
+        try {
+            PrintWriter fileout = new PrintWriter(new FileWriter("satisfactory.txt"));
+            for (FogNode s: nodes) {
+                fileout.println(s.uid+"\t"+s.satisfactory);
+            }
+            fileout.close();
+            System.out.println("success...");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

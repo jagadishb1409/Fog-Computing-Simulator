@@ -1,10 +1,8 @@
 package entities;
 
-import jdk.internal.icu.text.UnicodeSet;
 import parameters.Params;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FogNode<list> {
     public int uid;
@@ -18,10 +16,10 @@ public class FogNode<list> {
     public int numberOfRequests = 0;
     public int packetsQueue = 0;
     public int processingPower;
-    public int capacity = 40;
     public int neighboruingNodesDistance[] = new int[Params.NUM_OF_NODES];
     public int connectedNodes[] = new int[Params.NUM_OF_NODES];
     public int count = 0;
+    public float satisfactory;
 
     public void addNeighbouringNodes(int neighbouringNodes, int neighboruingNodesDistance) {
         this.neighboruingNodesDistance[count] = neighboruingNodesDistance;
@@ -39,13 +37,12 @@ public class FogNode<list> {
         return numberOfRequests;
     }
 
-    public int checkLoad() {
-        load = packetsQueue / capacity * 100;
-        return load;
+    public void checkSatisfactory() {
+        satisfactory = (float) (Params.capacity - packetsQueue) / Params.capacity * 100;
     }
 
     public boolean isHeavilyLoaded() {
-        if (packetsQueue >= 80) {
+        if (packetsQueue >= Params.capacity) {
             return true;
         }
         return false;
