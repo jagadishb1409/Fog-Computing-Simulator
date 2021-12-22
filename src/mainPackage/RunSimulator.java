@@ -2,6 +2,7 @@ package mainPackage;
 
 import DistanceCalculator.DistanceClaculate;
 import loadBalancer.loadBalancer;
+import loadBalancer.rrBalancer;
 import entities.FogNode;
 import entities.IotDevice;
 import service.ServiceClass;
@@ -47,6 +48,6 @@ public class RunSimulator {
         }
         DistanceClaculate.calculate(nodes, sts);
         loadBalancer.sendRequest(nodes, sts);
-
+//        rrBalancer.sendRequest(nodes, sts);
     }
 }
