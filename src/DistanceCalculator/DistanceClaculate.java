@@ -4,6 +4,8 @@ import entities.FogNode;
 import entities.IotDevice;
 import parameters.Params;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 import java.util.*;
@@ -56,6 +58,17 @@ public class DistanceClaculate {
         System.out.println("Iot devices connected to nearest fog nodes");
         for (FogNode j : nodes) {
             System.out.println("Fog Id " + j.uid + " total device connected = " + j.iotDevices);
+        }
+        try {
+            PrintWriter fileout = new PrintWriter(new FileWriter("fognodes_connected.txt"));
+
+            for (FogNode s: nodes) {
+                fileout.println(s.uid+"\t"+s.iotDevices);
+            }
+            fileout.close();
+            System.out.println("success...");
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
         for (FogNode j : nodes) {
